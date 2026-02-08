@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAVM Media - Menghadirkan Tayangan Berkelas</title>
+    <title>NOVA Apex Ventures Media - Menghadirkan Tayangan Berkelas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -26,11 +26,24 @@
             z-index: 1000;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
         .logo-main {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
             color: #1a4a9e;
             text-decoration: none;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: bold;
         }
 
         .nav-right {
@@ -64,6 +77,7 @@
         /* Hero Section */
         .hero {
             height: 90vh;
+            /* Kamu bisa mengganti URL gambar di bawah ini dengan foto studio kantor kamu */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
                         url('https://images.unsplash.com/photo-1492691523567-307300defc5f?q=80&w=2070') no-repeat center center/cover;
             display: flex;
@@ -73,14 +87,45 @@
             position: relative;
         }
 
-        .hero-text h1 {
-            font-size: clamp(32px, 8vw, 48px);
-            text-transform: uppercase;
-            font-weight: 800;
-            margin-bottom: 15px;
+        .hero-text {
+            max-width: 650px;
         }
 
-        /* Overlay Menu (Muncul Saat Klik) */
+        .hero-text h3 {
+            font-size: clamp(16px, 4vw, 20px);
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(32px, 8vw, 56px);
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .hero-text p {
+            font-size: clamp(14px, 4vw, 18px);
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .read-more {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .read-more:hover {
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* Overlay Menu */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -89,7 +134,7 @@
             height: 100%;
             background: white;
             z-index: 2000;
-            display: none; /* Sembunyi secara default */
+            display: none;
             flex-direction: column;
             padding: 20px 5%;
         }
@@ -101,7 +146,7 @@
         }
 
         .close-menu {
-            font-size: 30px;
+            font-size: 35px;
             background: none;
             border: none;
             cursor: pointer;
@@ -121,7 +166,7 @@
         .menu-links a {
             text-decoration: none;
             color: #333;
-            font-size: 18px;
+            font-size: clamp(16px, 5vw, 20px);
             font-weight: bold;
             text-transform: uppercase;
         }
@@ -136,20 +181,32 @@
         }
 
         .circle-btn {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border: 2px solid white;
             border-radius: 50%;
             background: transparent;
             color: white;
             cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .circle-btn:hover {
+            background: rgba(255,255,255,0.2);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo-main">NAVM <span style="font-size: 12px; color: #666;">MEDIA</span></a>
+        <div class="logo-container">
+            <a href="#" class="logo-main">NAVM</a>
+            <span class="logo-sub">MEDIA</span>
+        </div>
         <div class="nav-right">
             <button class="btn-lang">ID <i class="fas fa-chevron-down"></i></button>
             <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
@@ -162,7 +219,7 @@
         </div>
         <ul class="menu-links">
             <li><a href="#">TENTANG KAMI</a></li>
-            <li><a href="#">USAHA KAMI</a></li>
+            <li><a href="#">UNIT BISNIS</a></li>
             <li><a href="#">TATA KELOLA</a></li>
             <li><a href="#">HUBUNGAN INVESTOR</a></li>
             <li><a href="#">TANGGUNG JAWAB SOSIAL</a></li>
@@ -172,11 +229,10 @@
 
     <section class="hero">
         <div class="hero-text">
-            <h3>Surya Citra Media</h3>
+            <h3>NOVA Apex Ventures Media</h3>
             <h1>MENGHADIRKAN TAYANGAN BERKELAS</h1>
-            <p>Dengan penyiaran dan konten yang berkualitas</p>
-            <br>
-            <a href="#" style="color: #3498db; text-decoration: none; font-weight: bold;">Baca lebih lanjut</a>
+            <p>Dengan penyiaran dan konten kreatif berkualitas tinggi untuk Indonesia.</p>
+            <a href="#" class="read-more">Baca lebih lanjut</a>
         </div>
 
         <div class="slider-controls">
