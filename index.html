@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVM Media - Menghadirkan Tayangan Berkelas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Style SCM */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .logo-main {
+            font-size: 28px;
+            font-weight: 900;
+            color: #1a4a9e; /* Warna Biru SCM */
+            text-decoration: none;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn-lang {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            font-weight: bold;
+            color: #f39c12; /* Warna Kuning SCM */
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-radius: 4px;
+        }
+
+        .btn-menu {
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Hero Section Persis Screenshot */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(26, 42, 108, 0.4), rgba(1, 1, 1, 0.7)), 
+                        url('https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=2070') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .hero-text h1 {
+            font-size: 45px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .read-more {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Tombol Slider Bulat di Bawah */
+        .slider-controls {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .circle-btn {
+            width: 60px;
+            height: 60px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            background: transparent;
+            transition: 0.3s;
+        }
+
+        .circle-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 32px; }
+            .hero-text h3 { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="#" class="logo-main">NAVM</a>
+            <span class="logo-sub">MEDIA GROUP</span>
+        </div>
+        
+        <div class="nav-right">
+            <button class="btn-icon"><i class="fas fa-search"></i></button>
+            <button class="btn-lang">ID <i class="fas fa-chevron-down"></i></button>
+            <button class="btn-menu"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h3>NAVM Media</h3>
+            <h1>MENGHADIRKAN TAYANGAN BERKELAS</h1>
+            <p>Dengan penyiaran dan konten kreatif yang berkualitas tinggi untuk masyarakat Indonesia.</p>
+            <a href="#" class="read-more">Baca lebih lanjut</a>
+        </div>
+
+        <div class="slider-controls">
+            <button class="circle-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="circle-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+</body>
+</html>
