@@ -3,137 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA Apex Ventures Media - Penyiaran Digital Masa Depan</title>
+    <title>Penyiaran Digital - NOVA Apex Ventures Media</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
-
-        /* --- HEADER --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        
+        /* --- NAVIGATION --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 5%; background: #fff; border-bottom: 1px solid #eee;
+            padding: 15px 5%; background: #fff; border-bottom: 2px solid #1a4a9e;
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo-main { font-size: 24px; font-weight: 900; color: #1a4a9e; text-decoration: none; }
-        .btn-menu { background: #1a4a9e; color: white; border: none; padding: 10px 18px; border-radius: 4px; cursor: pointer; font-size: 20px; }
+        .logo-area { display: flex; align-items: center; gap: 8px; }
+        .logo-text { font-size: 24px; font-weight: 900; color: #1a4a9e; text-decoration: none; }
+        .btn-menu { background: #1a4a9e; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
 
-        /* --- HERO --- */
-        .hero {
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1540655037529-dec987208707?q=80&w=2000') no-repeat center center/cover;
-            display: flex; align-items: center; padding: 0 8%; color: #fff;
-        }
-        .hero-text h1 { font-size: clamp(28px, 6vw, 48px); text-transform: uppercase; font-weight: 800; margin-bottom: 15px; }
+        /* --- SUB-HEADER / BREADCRUMB --- */
+        .page-title { background: #f8f9fa; padding: 30px 5%; border-bottom: 1px solid #eee; }
+        .page-title h2 { color: #333; font-size: 28px; text-transform: uppercase; }
 
-        /* --- UNIT BISNIS SECTION (PENYIARAN DIGITAL) --- */
-        .broadcast-section { padding: 60px 8%; background: #f4f7f9; }
-        .section-title { color: #1a4a9e; margin-bottom: 40px; border-left: 5px solid #f39c12; padding-left: 15px; text-transform: uppercase; }
+        /* --- BROADCAST CONTENT --- */
+        .content-section { padding: 50px 5%; line-height: 1.8; color: #444; }
+        .intro-text { font-size: 18px; margin-bottom: 40px; border-left: 5px solid #f39c12; padding-left: 20px; }
+
+        .channel-container { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 30px; }
         
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .channel-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid #1a4a9e; }
-        .channel-card h2 { color: #1a4a9e; margin-bottom: 15px; font-size: 24px; }
-        .channel-card p { color: #555; line-height: 1.6; font-size: 15px; }
+        .channel-box { 
+            background: white; border: 1px solid #e0e0e0; border-radius: 10px; 
+            overflow: hidden; display: flex; flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .channel-header { background: #1a4a9e; color: white; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .channel-header h3 { font-size: 22px; letter-spacing: 1px; }
+        .tag-digital { background: #f39c12; color: white; padding: 4px 10px; font-size: 12px; font-weight: bold; border-radius: 3px; }
+
+        .channel-body { padding: 30px; }
+        .channel-body h4 { color: #1a4a9e; margin-bottom: 15px; font-size: 18px; }
+        .channel-body p { margin-bottom: 20px; text-align: justify; }
+        
+        .feature-list { list-style: none; display: flex; gap: 15px; flex-wrap: wrap; }
+        .feature-list li { background: #f0f4f8; padding: 5px 15px; border-radius: 20px; font-size: 13px; color: #1a4a9e; font-weight: 600; }
 
         /* --- MENU OVERLAY --- */
-        .menu-overlay {
+        .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #111; z-index: 2000; display: none; flex-direction: column; padding: 30px 8%; color: white;
+            background: rgba(26, 74, 158, 0.98); z-index: 2000; display: none;
+            flex-direction: column; padding: 40px 10%; color: white; overflow-y: auto;
         }
-        .close-btn { align-self: flex-end; background: none; border: none; color: white; font-size: 45px; cursor: pointer; }
-        .menu-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 30px; }
-        .menu-column h4 { color: #f39c12; margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .menu-column ul { list-style: none; }
-        .menu-column ul li { margin-bottom: 12px; }
-        .menu-column ul li a { color: #bbb; text-decoration: none; font-size: 14px; transition: 0.3s; }
-        .menu-column ul li a:hover { color: white; padding-left: 8px; }
+        .close-menu { align-self: flex-end; font-size: 40px; background: none; border: none; color: white; cursor: pointer; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 50px; }
+        .menu-grid h5 { color: #f39c12; font-size: 18px; margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; }
+        .menu-grid ul { list-style: none; }
+        .menu-grid ul li { margin-bottom: 12px; }
+        .menu-grid ul li a { color: #ddd; text-decoration: none; transition: 0.3s; }
+        .menu-grid ul li a:hover { color: white; padding-left: 10px; }
 
-        footer { background: #111; color: #666; padding: 30px; text-align: center; border-top: 1px solid #222; }
+        footer { background: #1a1a1a; color: #888; padding: 40px 5%; text-align: center; margin-top: 50px; }
+
+        @media (min-width: 768px) {
+            .channel-container { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo-main">NAVM <span style="font-size: 12px; color: #888;">MEDIA</span></a>
-        <div style="display: flex; gap: 10px;">
-            <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <div class="logo-area">
+            <a href="index.html" class="logo-text">NAVM</a>
+            <span style="font-size: 10px; color: #666; font-weight: bold; letter-spacing: 1px;">MEDIA GROUP</span>
         </div>
+        <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     </header>
 
-    <div class="menu-overlay" id="myMenu">
-        <button class="close-btn" onclick="toggleMenu()">&times;</button>
-        <div class="menu-content">
-            <div class="menu-column">
-                <h4>TENTANG KAMI</h4>
+    <div class="page-title">
+        <h2>Penyiaran Digital</h2>
+    </div>
+
+    <section class="content-section">
+        <div class="intro-text">
+            NOVA Apex Ventures Media berkomitmen untuk menghadirkan konten penyiaran berkualitas melalui infrastruktur digital yang modern, menjangkau seluruh lapisan masyarakat Indonesia dengan beragam preferensi tayangan.
+        </div>
+
+        <div class="channel-container">
+            
+            <div class="channel-box">
+                <div class="channel-header">
+                    <h3>VAMS TV</h3>
+                    <span class="tag-digital">DVB-T2</span>
+                </div>
+                <div class="channel-body">
+                    <h4>Ventures Apex Media System Television</h4>
+                    <p>VAMS TV hadir sebagai saluran televisi terestrial digital unggulan yang fokus pada program berita terkini, olahraga internasional, dan hiburan premium. Dengan teknologi <i>High Definition</i> (HD), VAMS TV memberikan pengalaman visual yang tajam dan audio yang jernih bagi keluarga Indonesia.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> News & Sport</li>
+                        <li><li><i class="fas fa-check"></i> High Definition</li>
+                        <li><i class="fas fa-check"></i> 24/7 Broadcast</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="channel-box">
+                <div class="channel-header">
+                    <h3>NSTV</h3>
+                    <span class="tag-digital">DVB-T2</span>
+                </div>
+                <div class="channel-body">
+                    <h4>Nova Star Television</h4>
+                    <p>NSTV adalah pionir saluran hiburan yang dirancang khusus untuk generasi muda dan milenial. Mengusung konsep <i>Smart & Trendy</i>, NSTV menyajikan konten gaya hidup, musik terkini, teknologi, serta tayangan kreatif orisinal yang menginspirasi anak muda untuk terus berinovasi.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Lifestyle</li>
+                        <li><i class="fas fa-check"></i> Music & Trend</li>
+                        <li><i class="fas fa-check"></i> Digital Interactive</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="channel-box">
+                <div class="channel-header">
+                    <h3>RAIZA CHANNELS</h3>
+                    <span class="tag-digital">MULTICHANNEL</span>
+                </div>
+                <div class="channel-body">
+                    <h4>Pusat Konten Edukasi & Budaya</h4>
+                    <p>RAIZA CHANNELS merupakan jaringan saluran tematik yang didedikasikan untuk pelestarian budaya Indonesia, konten edukatif anak, dan dokumenter alam. Melalui RAIZA, NAVM Media berupaya menjalankan fungsi edukasi media dengan cara yang menarik dan mudah dipahami oleh seluruh anggota keluarga.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Education</li>
+                        <li><i class="fas fa-check"></i> Culture</li>
+                        <li><i class="fas fa-check"></i> Documentary</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="overlay" id="menuNav">
+        <button class="close-menu" onclick="toggleMenu()">&times;</button>
+        <div class="menu-grid">
+            <div>
+                <h5>Tentang Kami</h5>
                 <ul>
                     <li><a href="#">Profil Perusahaan</a></li>
                     <li><a href="#">Manajemen</a></li>
                     <li><a href="#">Visi & Misi</a></li>
                 </ul>
             </div>
-            <div class="menu-column">
-                <h4>PENYIARAN DIGITAL</h4>
+            <div>
+                <h5>Usaha Kami</h5>
                 <ul>
-                    <li><a href="#">VAMS TV</a></li>
-                    <li><a href="#">NSTV</a></li>
-                    <li><a href="#">RAIZA CHANNELS</a></li>
-                </ul>
-            </div>
-            <div class="menu-column">
-                <h4>UNIT BISNIS LAIN</h4>
-                <ul>
+                    <li><a href="#">Penyiaran Digital</a></li>
                     <li><a href="#">Produksi Konten</a></li>
-                    <li><a href="#">Layanan Digital</a></li>
-                    <li><a href="#">Ventures</a></li>
+                    <li><a href="#">Layanan Media</a></li>
                 </ul>
             </div>
-            <div class="menu-column">
-                <h4>KARIR & KONTAK</h4>
+            <div>
+                <h5>Tata Kelola</h5>
                 <ul>
-                    <li><a href="#">Lowongan Kerja</a></li>
-                    <li><a href="#">Hubungi Kami</a></li>
+                    <li><a href="#">Dewan Komisaris</a></li>
+                    <li><a href="#">Dewan Direksi</a></li>
+                    <li><a href="#">Kode Etik</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Hubungi Kami</h5>
+                <ul>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Kontak Media</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>MENGHADIRKAN TAYANGAN BERKELAS</h1>
-            <p>NOVA Apex Ventures Media memimpin transformasi digital dalam industri penyiaran Indonesia.</p>
-        </div>
-    </section>
-
-    <section class="broadcast-section">
-        <h2 class="section-title">PENYIARAN DIGITAL KAMI</h2>
-        <div class="card-grid">
-            
-            <div class="channel-card">
-                <h2>VAMS TV</h2>
-                <p><strong>Ventures Apex Media System Television</strong>. Sebagai stasiun televisi digital utama dari NAVM Media, VAMS TV menyajikan program berita tercepat, hiburan keluarga, dan tayangan olahraga eksklusif dengan kualitas siaran Full HD.</p>
-            </div>
-
-            <div class="channel-card">
-                <h2>NSTV</h2>
-                <p><strong>Nova Star Television</strong>. Fokus pada konten gaya hidup modern, tren teknologi, dan musik terkini. NSTV dirancang untuk memenuhi selera audiens generasi muda Indonesia yang dinamis dan haus akan inovasi.</p>
-            </div>
-
-            <div class="channel-card">
-                <h2>RAIZA CHANNELS</h2>
-                <p>Platform saluran khusus yang menyediakan konten edukasi, dokumenter budaya, dan film-film karya anak bangsa. RAIZA CHANNELS berkomitmen membangun kecerdasan bangsa melalui tayangan inspiratif.</p>
-            </div>
-
-        </div>
-    </section>
-
     <footer>
-        <p>&copy; 2026 NOVA Apex Ventures Media Group. All Rights Reserved.</p>
+        <p>&copy; 2026 NOVA Apex Ventures Media. Seluruh Hak Cipta Dilindungi.</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            var menu = document.getElementById("myMenu");
-            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+            const menu = document.getElementById('menuNav');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
     </script>
 </body>
