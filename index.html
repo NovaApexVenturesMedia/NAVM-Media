@@ -3,210 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA Apex Ventures Media - Menghadirkan Tayangan Berkelas</title>
+    <title>NOVA Apex Ventures Media - Masa Depan Media</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
-        /* Header Style */
+        /* --- HEADER --- */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-            background: #fff;
-            border-bottom: 1px solid #eee;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 5%; background: #fff; border-bottom: 1px solid #eee;
+            position: sticky; top: 0; z-index: 1000;
         }
-
-        .logo-container {
-            display: flex;
-            align-items: baseline;
-            gap: 5px;
+        .logo-main { font-size: 24px; font-weight: 900; color: #1a4a9e; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+        .logo-sub { font-size: 10px; color: #777; font-weight: normal; letter-spacing: 1px; }
+        
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .btn-lang { 
+            background: #fff; border: 1px solid #ddd; padding: 8px 15px; 
+            font-weight: bold; color: #f39c12; border-radius: 4px; cursor: pointer;
         }
+        .btn-menu { background: #1a4a9e; color: white; border: none; padding: 10px 18px; border-radius: 4px; cursor: pointer; font-size: 20px; }
 
-        .logo-main {
-            font-size: 24px;
-            font-weight: 900;
-            color: #1a4a9e;
-            text-decoration: none;
-        }
-
-        .logo-sub {
-            font-size: 10px;
-            color: #666;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-lang {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 8px 12px;
-            font-weight: bold;
-            color: #f39c12;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            border-radius: 4px;
-        }
-
-        .btn-menu {
-            background: #34495e;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        /* Hero Section */
+        /* --- HERO SECTION --- */
         .hero {
-            height: 90vh;
-            /* Kamu bisa mengganti URL gambar di bawah ini dengan foto studio kantor kamu */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+            height: 75vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
                         url('https://images.unsplash.com/photo-1492691523567-307300defc5f?q=80&w=2070') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            color: #fff;
-            position: relative;
+            display: flex; align-items: center; padding: 0 8%; color: #fff; position: relative;
         }
+        .hero-text h3 { color: #f39c12; margin-bottom: 10px; font-size: 18px; text-transform: uppercase; }
+        .hero-text h1 { font-size: clamp(28px, 6vw, 52px); text-transform: uppercase; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text p { font-size: 18px; max-width: 500px; margin-bottom: 30px; opacity: 0.9; }
+        .btn-read { display: inline-block; padding: 12px 30px; border: 2px solid #fff; color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-read:hover { background: #fff; color: #1a4a9e; }
 
-        .hero-text {
-            max-width: 650px;
-        }
-
-        .hero-text h3 {
-            font-size: clamp(16px, 4vw, 20px);
-            margin-bottom: 10px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(32px, 8vw, 56px);
-            line-height: 1.1;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-        .hero-text p {
-            font-size: clamp(14px, 4vw, 18px);
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-
-        .read-more {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            border-bottom: 2px solid transparent;
-            transition: 0.3s;
-        }
-
-        .read-more:hover {
-            border-bottom: 2px solid #3498db;
-        }
-
-        /* Overlay Menu */
+        /* --- FULL SCREEN OVERLAY MENU --- */
         .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 2000;
-            display: none;
-            flex-direction: column;
-            padding: 20px 5%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #222; z-index: 2000; display: none; flex-direction: column;
+            overflow-y: auto; padding: 30px 5%; color: white;
         }
+        .menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .close-btn { background: none; border: none; color: white; font-size: 40px; cursor: pointer; }
 
-        .menu-header {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 30px;
-        }
+        .menu-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .menu-column h4 { color: #f39c12; font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 10px; text-transform: uppercase; }
+        .menu-column ul { list-style: none; }
+        .menu-column ul li { margin-bottom: 10px; }
+        .menu-column ul li a { color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .menu-column ul li a:hover { color: white; padding-left: 5px; }
 
-        .close-menu {
-            font-size: 35px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #333;
+        /* --- SLIDER BUTTONS --- */
+        .slider-nav { position: absolute; bottom: 30px; right: 8%; display: flex; gap: 20px; }
+        .nav-circle { 
+            width: 60px; height: 60px; border: 2px solid rgba(255,255,255,0.5); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; cursor: pointer; transition: 0.3s;
         }
+        .nav-circle:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
-        .menu-links {
-            list-style: none;
-        }
-
-        .menu-links li {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 10px;
-        }
-
-        .menu-links a {
-            text-decoration: none;
-            color: #333;
-            font-size: clamp(16px, 5vw, 20px);
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* Tombol Slider */
-        .slider-controls {
-            position: absolute;
-            bottom: 30px;
-            right: 5%;
-            display: flex;
-            gap: 15px;
-        }
-
-        .circle-btn {
-            width: 55px;
-            height: 55px;
-            border: 2px solid white;
-            border-radius: 50%;
-            background: transparent;
-            color: white;
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-        }
-
-        .circle-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
+        /* --- FOOTER --- */
+        footer { background: #111; color: #888; padding: 40px 5%; text-align: center; border-top: 1px solid #333; }
+        .footer-logo { color: white; font-size: 22px; font-weight: 900; margin-bottom: 10px; display: block; }
+        .copyright { font-size: 12px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <a href="#" class="logo-main">NAVM</a>
-            <span class="logo-sub">MEDIA</span>
-        </div>
+        <a href="#" class="logo-main">NAVM <span class="logo-sub">MEDIA</span></a>
         <div class="nav-right">
             <button class="btn-lang">ID <i class="fas fa-chevron-down"></i></button>
             <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
@@ -215,40 +80,71 @@
 
     <div class="menu-overlay" id="myMenu">
         <div class="menu-header">
-            <button class="close-menu" onclick="toggleMenu()">&times;</button>
+            <span class="logo-main" style="color: white;">NAVM <span class="logo-sub" style="color: #999;">MEDIA</span></span>
+            <button class="close-btn" onclick="toggleMenu()">&times;</button>
         </div>
-        <ul class="menu-links">
-            <li><a href="#">TENTANG KAMI</a></li>
-            <li><a href="#">UNIT BISNIS</a></li>
-            <li><a href="#">TATA KELOLA</a></li>
-            <li><a href="#">HUBUNGAN INVESTOR</a></li>
-            <li><a href="#">TANGGUNG JAWAB SOSIAL</a></li>
-            <li><a href="#">KARIR</a></li>
-        </ul>
+        
+        <div class="menu-content">
+            <div class="menu-column">
+                <h4>Tentang Kami</h4>
+                <ul>
+                    <li><a href="#">Profil Perusahaan</a></li>
+                    <li><a href="#">Manajemen</a></li>
+                    <li><a href="#">Penghargaan</a></li>
+                </ul>
+            </div>
+            <div class="menu-column">
+                <h4>Unit Bisnis</h4>
+                <ul>
+                    <li><a href="#">Penyiaran Digital</a></li>
+                    <li><a href="#">Produksi Konten</a></li>
+                    <li><a href="#">Layanan Media</a></li>
+                </ul>
+            </div>
+            <div class="menu-column">
+                <h4>Investor</h4>
+                <ul>
+                    <li><a href="#">Laporan Keuangan</a></li>
+                    <li><a href="#">Informasi Saham</a></li>
+                    <li><a href="#">Dividen</a></li>
+                </ul>
+            </div>
+            <div class="menu-column">
+                <h4>Karir & Kontak</h4>
+                <ul>
+                    <li><a href="#">Lowongan Kerja</a></li>
+                    <li><a href="#">Hubungi Kami</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <section class="hero">
         <div class="hero-text">
-            <h3>NOVA Apex Ventures Media</h3>
-            <h1>MENGHADIRKAN TAYANGAN BERKELAS</h1>
-            <p>Dengan penyiaran dan konten kreatif berkualitas tinggi untuk Indonesia.</p>
-            <a href="#" class="read-more">Baca lebih lanjut</a>
+            <h3>Innovating Your Vision</h3>
+            <h1>NOVA Apex Ventures Media</h1>
+            <p>Menghadirkan konten kreatif dan penyiaran berkualitas tinggi untuk masa depan Indonesia.</p>
+            <a href="#" class="btn-read">BACA LEBIH LANJUT</a>
         </div>
 
-        <div class="slider-controls">
-            <button class="circle-btn"><i class="fas fa-chevron-left"></i></button>
-            <button class="circle-btn"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-nav">
+            <div class="nav-circle"><i class="fas fa-chevron-left"></i></div>
+            <div class="nav-circle"><i class="fas fa-chevron-right"></i></div>
         </div>
     </section>
+
+    <footer>
+        <span class="footer-logo">NAVM MEDIA GROUP</span>
+        <p>Innovation Center Building, Jakarta, Indonesia</p>
+        <div class="copyright">
+            Copyright &copy; 2026 NOVA Apex Ventures Media. All Rights Reserved.
+        </div>
+    </footer>
 
     <script>
         function toggleMenu() {
             var menu = document.getElementById("myMenu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
+            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
         }
     </script>
 
