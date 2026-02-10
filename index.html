@@ -3,43 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA Apex Ventures Media - Official Website</title>
+    <title>NAV Media Group | Penyiaran Digital Masa Depan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --navy: #1a4a9e;
             --gold: #f39c12;
-            --dark: #111;
+            --dark-overlay: rgba(17, 17, 17, 0.98);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background: #fff; color: #333; overflow-x: hidden; }
+        body { background: #fff; color: #333; }
 
-        /* HEADER (Mirip SCMA) */
+        /* HEADER */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: #fff; border-bottom: 3px solid var(--navy);
+            padding: 15px 5%; background: #fff; border-bottom: 2px solid #eee;
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo { font-size: 24px; font-weight: 900; color: var(--navy); text-decoration: none; }
-        .logo span { font-size: 10px; color: #666; font-weight: bold; letter-spacing: 1px; }
-        .btn-menu { background: var(--navy); color: #fff; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 20px; }
+        .logo { font-size: 26px; font-weight: 900; color: var(--navy); text-decoration: none; letter-spacing: -1px; }
+        .logo span { font-size: 10px; color: #888; letter-spacing: 1px; margin-left: 5px; }
+        .btn-menu { background: var(--navy); color: #fff; border: none; padding: 10px 18px; border-radius: 4px; cursor: pointer; font-size: 20px; }
 
-        /* SECTION CONTROL (Halaman Kosong Awal) */
-        section { display: none; padding: 60px 8%; animation: fadeIn 0.5s ease; }
+        /* MENU OVERLAY (IDENTIK SCMA) */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--dark-overlay); z-index: 2000; display: none; 
+            flex-direction: column; padding: 50px 8%; color: #fff; overflow-y: auto;
+        }
+        .close-btn { align-self: flex-end; font-size: 50px; color: #fff; background: none; border: none; cursor: pointer; line-height: 1; }
+        
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 40px; }
+        .menu-col h5 { color: var(--gold); font-size: 18px; margin-bottom: 25px; border-bottom: 1px solid #444; padding-bottom: 10px; text-transform: uppercase; }
+        .menu-col ul { list-style: none; }
+        .menu-col li { margin-bottom: 15px; }
+        .menu-col a { color: #ccc; text-decoration: none; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .menu-col a:hover { color: #fff; padding-left: 10px; }
+
+        /* CONTENT SECTIONS */
+        section { display: none; padding: 60px 8%; animation: fadeIn 0.5s ease forwards; }
         .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* HERO / HOME (Tampilan Awal) */
+        /* HOME / BANNER AWAL */
         #home {
-            height: 85vh; display: flex; align-items: center; justify-content: center;
+            height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1492691523567-307300defc5f?q=80&w=2070') no-repeat center center/cover;
+                        url('https://images.unsplash.com/photo-1540655037529-dec987208707?q=80&w=2000') center/cover;
             text-align: center; color: #fff;
         }
-        #home h1 { font-size: clamp(30px, 6vw, 55px); font-weight: 800; text-transform: uppercase; }
+        #home h1 { font-size: clamp(30px, 6vw, 60px); font-weight: 800; letter-spacing: 2px; }
+        #home p { font-size: 18px; color: var(--gold); margin-top: 10px; font-weight: 600; text-transform: uppercase; }
 
-        /* JUDUL SECTION */
         .section-title { border-left: 6px solid var(--gold); padding-left: 20px; margin-bottom: 40px; }
         .section-title h2 { font-size: 32px; color: var(--navy); text-transform: uppercase; }
 
@@ -49,87 +64,28 @@
         .card:hover { transform: translateY(-10px); }
 
         /* PENYIARAN */
-        .ch-head { padding: 25px; color: #fff; text-align: center; font-weight: bold; font-size: 24px; }
+        .ch-badge { padding: 25px; color: #fff; text-align: center; font-weight: 800; font-size: 24px; }
+        .card-body { padding: 25px; text-align: center; }
+        .card-body h4 { color: var(--navy); margin-bottom: 10px; }
+        .card-body p { font-size: 14px; color: #666; line-height: 1.6; }
 
         /* MANAJEMEN */
-        .profile-img { width: 100%; height: 380px; background: #eee; object-fit: cover; }
-        .card-info { padding: 25px; text-align: center; }
-        .card-info h4 { font-size: 20px; color: var(--navy); margin-bottom: 5px; }
-        .card-info p { font-size: 14px; font-weight: bold; color: var(--gold); text-transform: uppercase; }
+        .profile-img { width: 100%; height: 400px; background: #eee; object-fit: cover; display: block; }
+        .mgt-info { padding: 25px; text-align: center; background: #fff; }
+        .mgt-info h4 { font-size: 20px; color: var(--navy); margin-bottom: 5px; }
+        .mgt-info p { font-size: 13px; font-weight: bold; color: var(--gold); text-transform: uppercase; }
 
-        /* OVERLAY MENU (PERSIS SCMA) */
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(17, 17, 17, 0.98); z-index: 2000; display: none; flex-direction: column; padding: 40px 8%; color: #fff; overflow-y: auto;
-        }
-        .close-btn { align-self: flex-end; font-size: 50px; color: #fff; background: none; border: none; cursor: pointer; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 40px; }
-        .menu-col h5 { color: var(--gold); font-size: 18px; margin-bottom: 25px; border-bottom: 1px solid #444; padding-bottom: 10px; text-transform: uppercase; }
-        .menu-col ul { list-style: none; }
-        .menu-col li { margin-bottom: 15px; }
-        .menu-col a { color: #ccc; text-decoration: none; font-size: 16px; cursor: pointer; transition: 0.3s; }
-        .menu-col a:hover { color: #fff; padding-left: 10px; }
-
-        footer { background: var(--dark); color: #777; padding: 40px; text-align: center; }
+        footer { background: #111; color: #666; padding: 40px; text-align: center; font-size: 14px; }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="javascript:void(0)" onclick="showPage('home')" class="logo">NAVM <span>MEDIA GROUP</span></a>
+        <a href="javascript:void(0)" onclick="showPage('home')" class="logo">NAVM<span>MEDIA GROUP</span></a>
         <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     </header>
 
-    <section id="home" class="active">
-        <h1>NOVA APEX VENTURES MEDIA</h1>
-    </section>
-
-    <section id="penyiaran">
-        <div class="section-title"><h2>Unit Penyiaran Digital</h2></div>
-        <div class="grid">
-            <div class="card"><div class="ch-head" style="background:#1a4a9e">VAMSTV</div><div class="card-info"><h4>Ventures Apex Media System</h4><p>News & Sports</p></div></div>
-            <div class="card"><div class="ch-head" style="background:#f39c12">NSTV</div><div class="card-info"><h4>Nova Star Television</h4><p>Lifestyle & Youth</p></div></div>
-            <div class="card"><div class="ch-head" style="background:#27ae60">RAIZA</div><div class="card-info"><h4>Raiza Channels</h4><p>Education & Culture</p></div></div>
-            <div class="card"><div class="ch-head" style="background:#e74c3c">NVDTV</div><div class="card-info"><h4>Nova Vision Digital</h4><p>Movies & Drama</p></div></div>
-            <div class="card"><div class="ch-head" style="background:#8e44ad">VMATV</div><div class="card-info"><h4>Ventures Media Asia</h4><p>Business & Tech</p></div></div>
-        </div>
-    </section>
-
-    <section id="manajemen">
-        <div class="section-title"><h2>Dewan Direksi</h2></div>
-        <div class="grid">
-            <div class="card">
-                <img src="https://via.placeholder.com/400x500?text=M+RAMADHAN" class="profile-img" alt="M RAMADHAN">
-                <div class="card-info">
-                    <h4>M RAMADHAN</h4>
-                    <p>Direktur Utama</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/400x500?text=Rayandra" class="profile-img" alt="Rayandra">
-                <div class="card-info">
-                    <h4>Rayandra Alvernio Virmansyah</h4>
-                    <p>Direktur Programming</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/400x500?text=Kenzo" class="profile-img" alt="Kenzo">
-                <div class="card-info">
-                    <h4>Kenzo Fabian Narendra</h4>
-                    <p>Direktur Operasional</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/400x500?text=Aris+Satria" class="profile-img" alt="Aris">
-                <div class="card-info">
-                    <h4>Aris Satria Dewa</h4>
-                    <p>Direktur Keuangan</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="overlay" id="menuOverlay">
+    <div class="overlay" id="mainMenu">
         <button class="close-btn" onclick="toggleMenu()">&times;</button>
         <div class="menu-grid">
             <div class="menu-col">
@@ -138,6 +94,7 @@
                     <li><a onclick="showPage('home')">Beranda</a></li>
                     <li><a onclick="showPage('manajemen')">Manajemen</a></li>
                     <li><a href="#">Profil Perusahaan</a></li>
+                    <li><a href="#">Visi & Misi</a></li>
                 </ul>
             </div>
             <div class="menu-col">
@@ -145,36 +102,109 @@
                 <ul>
                     <li><a onclick="showPage('penyiaran')">Penyiaran Digital</a></li>
                     <li><a href="#">Produksi Konten</a></li>
-                    <li><a href="#">Layanan Digital</a></li>
+                    <li><a href="#">Distribusi Media</a></li>
                 </ul>
             </div>
             <div class="menu-col">
                 <h5>Hubungan Investor</h5>
                 <ul>
-                    <li><a href="#">Laporan Tahunan</a></li>
                     <li><a href="#">Informasi Saham</a></li>
+                    <li><a href="#">Laporan Tahunan</a></li>
+                    <li><a href="#">Tata Kelola</a></li>
+                </ul>
+            </div>
+            <div class="menu-col">
+                <h5>Karir & Kontak</h5>
+                <ul>
+                    <li><a href="#">Lowongan Kerja</a></li>
+                    <li><a href="#">Hubungi Kami</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
+    <section id="home" class="active">
+        <h1>NAV MEDIA GROUP</h1>
+        <p>Transformasi Penyiaran Digital Indonesia</p>
+    </section>
+
+    <section id="penyiaran">
+        <div class="section-title"><h2>Penyiaran Digital</h2></div>
+        <div class="grid">
+            <div class="card">
+                <div class="ch-badge" style="background:#1a4a9e">VAMSTV</div>
+                <div class="card-body"><h4>Ventures Apex Media System</h4><p>Saluran Berita Utama & Olahraga Premium Nasional.</p></div>
+            </div>
+            <div class="card">
+                <div class="ch-badge" style="background:#f39c12">NSTV</div>
+                <div class="card-body"><h4>Nova Star Television</h4><p>Pusat Hiburan Gaya Hidup & Tren Generasi Muda.</p></div>
+            </div>
+            <div class="card">
+                <div class="ch-badge" style="background:#27ae60">RAIZA</div>
+                <div class="card-body"><h4>Raiza Channels</h4><p>Saluran Edukasi Keluarga & Dokumenter Budaya.</p></div>
+            </div>
+            <div class="card">
+                <div class="ch-badge" style="background:#e74c3c">NVDTV</div>
+                <div class="card-body"><h4>Nova Vision Digital</h4><p>Saluran Film & Drama Orisinal Berkualitas Tinggi.</p></div>
+            </div>
+            <div class="card">
+                <div class="ch-badge" style="background:#8e44ad">VMATV</div>
+                <div class="card-body"><h4>Ventures Media Asia</h4><p>Informasi Bisnis & Inovasi Teknologi Asia Pasifik.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="manajemen">
+        <div class="section-title"><h2>Dewan Direksi</h2></div>
+        <div class="grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/400x500?text=M+RAMADHAN" class="profile-img" alt="M RAMADHAN">
+                <div class="mgt-info">
+                    <h4>M RAMADHAN</h4>
+                    <p>Direktur Utama</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x500?text=Rayandra" class="profile-img" alt="Rayandra">
+                <div class="mgt-info">
+                    <h4>Rayandra Alvernio Virmansyah</h4>
+                    <p>Direktur Programming</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x500?text=Kenzo" class="profile-img" alt="Kenzo">
+                <div class="mgt-info">
+                    <h4>Kenzo Fabian Narendra</h4>
+                    <p>Direktur Operasional</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x500?text=Aris+Satria" class="profile-img" alt="Aris">
+                <div class="mgt-info">
+                    <h4>Aris Satria Dewa</h4>
+                    <p>Direktur Keuangan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2026 NOVA Apex Ventures Media Group. Seluruh Hak Cipta Dilindungi.</p>
+        <p>&copy; 2026 NOVA Apex Ventures Media Group. All Rights Reserved.</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('menuOverlay');
+            const menu = document.getElementById('mainMenu');
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        function showPage(pageId) {
+        function showPage(id) {
             // Sembunyikan semua section
-            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-            // Tampilkan section yang dipilih
-            document.getElementById(pageId).classList.add('active');
-            // Tutup menu overlay
-            toggleMenu();
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            // Tampilkan yang dipilih
+            document.getElementById(id).classList.add('active');
+            // Tutup menu otomatis setelah klik
+            document.getElementById('mainMenu').style.display = 'none';
             // Scroll ke atas otomatis
             window.scrollTo(0,0);
         }
