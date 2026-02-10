@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA Apex Ventures Media - Official Website</title>
+    <title>NAVM Media - Official Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -13,10 +13,10 @@
             --light-gray: #f4f7f9;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #fff; color: #333; overflow-x: hidden; }
 
-        /* --- HEADER --- */
+        /* --- HEADER & NAV --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: #fff; border-bottom: 3px solid var(--primary-blue);
@@ -24,9 +24,6 @@
         }
         .logo { font-size: 26px; font-weight: 900; color: var(--primary-blue); text-decoration: none; display: flex; align-items: baseline; gap: 5px; }
         .logo span { font-size: 10px; color: #666; font-weight: bold; letter-spacing: 1px; }
-        
-        .nav-btns { display: flex; gap: 10px; align-items: center; }
-        .btn-lang { padding: 8px 12px; border: 1px solid #ddd; background: #fff; font-weight: bold; color: var(--accent-orange); border-radius: 4px; cursor: pointer; }
         .btn-menu { background: var(--primary-blue); color: #fff; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 18px; }
 
         /* --- SECTIONS LOGIC --- */
@@ -38,12 +35,16 @@
         .section-header h2 { font-size: 32px; color: var(--primary-blue); text-transform: uppercase; }
 
         /* --- GRID SYSTEM --- */
-        .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .card { background: #fff; border-radius: 12px; border: 1px solid #eee; overflow: hidden; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
         .card-head { padding: 20px; color: #fff; text-align: center; }
         .card-body { padding: 25px; line-height: 1.7; }
-        .card-body h4 { margin-bottom: 10px; color: var(--primary-blue); }
+        .card-body h4 { margin-bottom: 5px; color: var(--primary-blue); font-size: 18px; }
+
+        /* --- MANAGEMENT PHOTO PLACEHOLDER --- */
+        .photo-placeholder { width: 100%; height: 280px; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; position: relative; }
+        .photo-placeholder i { font-size: 80px; }
 
         /* --- OVERLAY MENU --- */
         .overlay {
@@ -52,112 +53,83 @@
         }
         .overlay-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
         .close-btn { font-size: 45px; color: #fff; background: none; border: none; cursor: pointer; }
-        
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .menu-col h5 { color: var(--accent-orange); font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 10px; }
         .menu-col ul { list-style: none; }
         .menu-col ul li { margin-bottom: 15px; }
-        .menu-col ul li a { color: #ccc; text-decoration: none; font-size: 15px; cursor: pointer; transition: 0.3s; }
-        .menu-col ul li a:hover { color: #fff; padding-left: 8px; }
+        .menu-col ul li a { color: #ccc; text-decoration: none; font-size: 15px; cursor: pointer; }
 
-        /* --- STATS BOX --- */
-        .stats-container { margin-top: 50px; display: flex; justify-content: space-around; background: var(--light-gray); padding: 40px; border-radius: 15px; text-align: center; }
-        .stat-item h2 { font-size: 40px; color: var(--primary-blue); margin-bottom: 5px; }
-        .stat-item p { font-weight: bold; color: #666; font-size: 14px; }
-
-        footer { background: var(--dark-bg); color: #888; padding: 40px 5%; text-align: center; }
+        footer { background: var(--dark-bg); color: #888; padding: 40px 5%; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <header>
         <a href="javascript:void(0)" onclick="showSection('home')" class="logo">NAVM <span>MEDIA GROUP</span></a>
-        <div class="nav-btns">
-            <button class="btn-lang">ID <i class="fas fa-chevron-down"></i></button>
-            <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-        </div>
+        <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     </header>
 
     <section id="home" class="active-section">
         <div class="section-header">
             <h2>MENGHADIRKAN TAYANGAN BERKELAS</h2>
         </div>
-        <p style="font-size: 18px; margin-bottom: 30px; line-height: 1.8;">
-            <b>NOVA Apex Ventures Media</b> adalah pemimpin dalam transformasi penyiaran digital Indonesia. 
-            Kami mengelola ekosistem media yang terintegrasi untuk memberikan informasi, edukasi, dan hiburan tanpa batas.
+        <p style="font-size: 18px; margin-bottom: 40px; line-height: 1.8;">
+            <b>NOVA Apex Ventures Media</b> adalah ekosistem media digital terintegrasi di Indonesia, mengelola spektrum luas dari penyiaran digital hingga produksi konten kreatif yang menginspirasi jutaan penonton.
         </p>
-        <div class="grid-5">
+        <div class="grid-container">
             <div class="card" style="border-top: 5px solid var(--accent-orange);" onclick="showSection('penyiaran')">
                 <div class="card-body">
                     <i class="fas fa-broadcast-tower" style="font-size: 30px; color: var(--accent-orange); margin-bottom: 15px;"></i>
                     <h4>Unit Penyiaran</h4>
-                    <p>Jelajahi 5 saluran televisi digital unggulan kami yang menjangkau seluruh nusantara.</p>
+                    <p>Lihat 5 stasiun televisi digital unggulan kami.</p>
                 </div>
             </div>
-            <div class="card" style="border-top: 5px solid var(--primary-blue);" onclick="showSection('profil')">
+            <div class="card" style="border-top: 5px solid var(--primary-blue);" onclick="showSection('manajemen')">
                 <div class="card-body">
-                    <i class="fas fa-building" style="font-size: 30px; color: var(--primary-blue); margin-bottom: 15px;"></i>
-                    <h4>Profil Kami</h4>
-                    <p>Pelajari visi besar NAVM Media dalam membangun kedaulatan informasi digital.</p>
+                    <i class="fas fa-users" style="font-size: 30px; color: var(--primary-blue); margin-bottom: 15px;"></i>
+                    <h4>Manajemen</h4>
+                    <p>Jajaran pemimpin profesional NAVM Media.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="penyiaran">
-        <div class="section-header">
-            <h2>Unit Penyiaran Digital</h2>
-        </div>
-        <div class="grid-5">
-            <div class="card">
-                <div class="card-head" style="background: #1a4a9e;"><h2>VAMSTV</h2></div>
-                <div class="card-body">
-                    <h4>Ventures Apex Media System</h4>
-                    <p>Saluran berita utama & olahraga premium. Menghadirkan jurnalisme tajam dan siaran langsung kompetisi olahraga dunia.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-head" style="background: #f39c12;"><h2>NSTV</h2></div>
-                <div class="card-body">
-                    <h4>Nova Star Television</h4>
-                    <p>Pusat tren milenial, musik, dan gaya hidup digital. Menginspirasi generasi muda melalui konten kreatif.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-head" style="background: #27ae60;"><h2>RAIZA</h2></div>
-                <div class="card-body">
-                    <h4>Raiza Channels</h4>
-                    <p>Saluran edukasi dan dokumenter budaya. Fokus pada kekayaan intelektual dan kearifan lokal Indonesia.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-head" style="background: #e74c3c;"><h2>NVDTV</h2></div>
-                <div class="card-body">
-                    <h4>Nova Vision Digital</h4>
-                    <p>Saluran sinema dan drama eksklusif. Menghadirkan karya sinematografi terbaik langsung ke layar Anda.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-head" style="background: #8e44ad;"><h2>VMATV</h2></div>
-                <div class="card-body">
-                    <h4>Ventures Media Asia</h4>
-                    <p>Saluran bisnis, teknologi, dan inovasi. Jendela informasi perkembangan ekonomi global dan Asia.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="stats-container">
-            <div class="stat-item"><h2>5</h2><p>SALURAN DIGITAL</p></div>
-            <div class="stat-item"><h2>100%</h2><p>HD QUALITY</p></div>
-            <div class="stat-item"><h2>24/7</h2><p>NON-STOP BROADCAST</p></div>
+        <div class="section-header"><h2>Unit Penyiaran Digital</h2></div>
+        <div class="grid-container">
+            <div class="card"><div class="card-head" style="background: #1a4a9e;"><h2>VAMSTV</h2></div><div class="card-body"><h4>Ventures Apex Media System</h4><p>Saluran berita utama & olahraga premium nasional.</p></div></div>
+            <div class="card"><div class="card-head" style="background: #f39c12;"><h2>NSTV</h2></div><div class="card-body"><h4>Nova Star Television</h4><p>Pusat hiburan gaya hidup dan tren generasi muda.</p></div></div>
+            <div class="card"><div class="card-head" style="background: #27ae60;"><h2>RAIZA</h2></div><div class="card-body"><h4>Raiza Channels</h4><p>Fokus pada edukasi keluarga dan dokumenter budaya.</p></div></div>
+            <div class="card"><div class="card-head" style="background: #e74c3c;"><h2>NVDTV</h2></div><div class="card-body"><h4>Nova Vision Digital</h4><p>Saluran film dan drama orisinal berkualitas tinggi.</p></div></div>
+            <div class="card"><div class="card-head" style="background: #8e44ad;"><h2>VMATV</h2></div><div class="card-body"><h4>Ventures Media Asia</h4><p>Jaringan informasi bisnis dan inovasi Asia Pasifik.</p></div></div>
         </div>
     </section>
 
-    <section id="profil">
-        <div class="section-header"><h2>Profil Perusahaan</h2></div>
-        <p style="font-size: 18px; line-height: 2;">
-            NOVA Apex Ventures Media (NAVM) didirikan untuk menjawab tantangan era digital. Kami berkomitmen menjalankan tata kelola perusahaan yang transparan sembari terus memperluas jaringan penyiaran kami ke seluruh pelosok negeri.
-        </p>
+    <section id="manajemen">
+        <div class="section-header"><h2>Dewan Direksi</h2></div>
+        <div class="grid-container">
+            <div class="card">
+                <div class="photo-placeholder"><i class="fas fa-user-tie"></i></div>
+                <div class="card-body" style="text-align: center;">
+                    <h4>M RAMADHAN</h4>
+                    <p style="color: var(--accent-orange); font-weight: bold; font-size: 14px;">DIREKTUR UTAMA</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="photo-placeholder"><i class="fas fa-user-tie"></i></div>
+                <div class="card-body" style="text-align: center;">
+                    <h4>Rayandra Alvernio Virmansyah</h4>
+                    <p style="color: var(--accent-orange); font-weight: bold; font-size: 14px;">DIREKTUR PROGRAMMING</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="photo-placeholder"><i class="fas fa-user-tie"></i></div>
+                <div class="card-body" style="text-align: center;">
+                    <h4>Kenzo Fabian Narendra</h4>
+                    <p style="color: var(--accent-orange); font-weight: bold; font-size: 14px;">DIREKTUR OPERASIONAL</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <div class="overlay" id="menuOverlay">
@@ -169,9 +141,8 @@
             <div class="menu-col">
                 <h5>Tentang Kami</h5>
                 <ul>
-                    <li><a onclick="showSection('profil')">Profil Perusahaan</a></li>
-                    <li><a onclick="showSection('home')">Visi & Misi</a></li>
-                    <li><a href="#">Manajemen</a></li>
+                    <li><a onclick="showSection('home')">Profil Perusahaan</a></li>
+                    <li><a onclick="showSection('manajemen')">Manajemen</a></li>
                 </ul>
             </div>
             <div class="menu-col">
@@ -180,16 +151,6 @@
                     <li><a onclick="showSection('penyiaran')">Penyiaran Digital</a></li>
                     <li><a href="#">VAMSTV</a></li>
                     <li><a href="#">NSTV</a></li>
-                    <li><a href="#">RAIZA CHANNELS</a></li>
-                    <li><a href="#">NVDTV</a></li>
-                    <li><a href="#">VMATV</a></li>
-                </ul>
-            </div>
-            <div class="menu-col">
-                <h5>Investor</h5>
-                <ul>
-                    <li><a href="#">Informasi Saham</a></li>
-                    <li><a href="#">Laporan Tahunan</a></li>
                 </ul>
             </div>
             <div class="menu-col">
@@ -211,7 +172,6 @@
             const m = document.getElementById('menuOverlay');
             m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
         }
-
         function showSection(id) {
             document.querySelectorAll('section').forEach(s => s.classList.remove('active-section'));
             document.getElementById(id).classList.add('active-section');
