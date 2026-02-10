@@ -3,181 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAVM Media - Official Website</title>
+    <title>NOVA Apex Ventures Media - Official Corporate Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #1a4a9e;
-            --accent-orange: #f39c12;
-            --dark-bg: #111;
-            --light-gray: #f4f7f9;
+            --navy: #1a4a9e;
+            --gold: #f39c12;
+            --light: #f8f9fa;
+            --dark: #111;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background: #fff; color: #333; overflow-x: hidden; }
+        body { background: #fff; color: #333; line-height: 1.6; }
 
-        /* --- HEADER & NAV --- */
+        /* --- HEADER --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: #fff; border-bottom: 3px solid var(--primary-blue);
+            padding: 15px 5%; background: #fff; border-bottom: 3px solid var(--navy);
             position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .logo { font-size: 26px; font-weight: 900; color: var(--primary-blue); text-decoration: none; display: flex; align-items: baseline; gap: 5px; }
+        .logo { font-size: 24px; font-weight: 900; color: var(--navy); text-decoration: none; }
         .logo span { font-size: 10px; color: #666; font-weight: bold; letter-spacing: 1px; }
-        .btn-menu { background: var(--primary-blue); color: #fff; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 18px; }
+        
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .btn-lang { padding: 8px 12px; border: 1px solid #ddd; background: #fff; color: var(--gold); font-weight: bold; border-radius: 4px; cursor: pointer; }
+        .btn-menu { background: var(--navy); color: #fff; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
 
-        /* --- SECTIONS LOGIC --- */
-        section { display: none; padding: 60px 5%; animation: fadeIn 0.6s ease; }
-        .active-section { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .section-header { margin-bottom: 40px; border-left: 6px solid var(--accent-orange); padding-left: 20px; }
-        .section-header h2 { font-size: 32px; color: var(--primary-blue); text-transform: uppercase; }
-
-        /* --- GRID SYSTEM --- */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: #fff; border-radius: 12px; border: 1px solid #eee; overflow: hidden; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .card-head { padding: 20px; color: #fff; text-align: center; }
-        .card-body { padding: 25px; line-height: 1.7; }
-        .card-body h4 { margin-bottom: 5px; color: var(--primary-blue); font-size: 18px; }
-
-        /* --- MANAGEMENT PHOTO PLACEHOLDER --- */
-        .photo-placeholder { width: 100%; height: 280px; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; position: relative; }
-        .photo-placeholder i { font-size: 80px; }
-
-        /* --- OVERLAY MENU --- */
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(17, 17, 17, 0.98); z-index: 2000; display: none; flex-direction: column; padding: 40px 8%; color: #fff;
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1492691523567-307300defc5f?q=80&w=2070') no-repeat center center/cover;
+            display: flex; align-items: center; padding: 0 8%; color: #fff; position: relative;
         }
-        .overlay-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
-        .close-btn { font-size: 45px; color: #fff; background: none; border: none; cursor: pointer; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .menu-col h5 { color: var(--accent-orange); font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 10px; }
-        .menu-col ul { list-style: none; }
-        .menu-col ul li { margin-bottom: 15px; }
-        .menu-col ul li a { color: #ccc; text-decoration: none; font-size: 15px; cursor: pointer; }
+        .hero-text h3 { font-size: 20px; color: var(--gold); margin-bottom: 10px; text-transform: uppercase; }
+        .hero-text h1 { font-size: clamp(30px, 6vw, 55px); line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+        .hero-text p { font-size: 18px; max-width: 600px; margin-bottom: 30px; opacity: 0.9; }
+        .btn-more { display: inline-block; padding: 12px 30px; border: 2px solid #fff; color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-more:hover { background: #fff; color: var(--navy); }
 
-        footer { background: var(--dark-bg); color: #888; padding: 40px 5%; text-align: center; margin-top: 50px; }
-    </style>
-</head>
-<body>
+        /* --- SECTION GLOBAL STYLE --- */
+        section { padding: 80px 8%; display: none; animation: fadeIn 0.5s ease forwards; }
+        .active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    <header>
-        <a href="javascript:void(0)" onclick="showSection('home')" class="logo">NAVM <span>MEDIA GROUP</span></a>
-        <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-    </header>
-
-    <section id="home" class="active-section">
-        <div class="section-header">
-            <h2>MENGHADIRKAN TAYANGAN BERKELAS</h2>
-        </div>
-        <p style="font-size: 18px; margin-bottom: 40px; line-height: 1.8;">
-            <b>NOVA Apex Ventures Media</b> adalah ekosistem media digital terintegrasi di Indonesia, mengelola spektrum luas dari penyiaran digital hingga produksi konten kreatif yang menginspirasi jutaan penonton.
-        </p>
-        <div class="grid-container">
-            <div class="card" style="border-top: 5px solid var(--accent-orange);" onclick="showSection('penyiaran')">
-                <div class="card-body">
-                    <i class="fas fa-broadcast-tower" style="font-size: 30px; color: var(--accent-orange); margin-bottom: 15px;"></i>
-                    <h4>Unit Penyiaran</h4>
-                    <p>Lihat 5 stasiun televisi digital unggulan kami.</p>
-                </div>
-            </div>
-            <div class="card" style="border-top: 5px solid var(--primary-blue);" onclick="showSection('manajemen')">
-                <div class="card-body">
-                    <i class="fas fa-users" style="font-size: 30px; color: var(--primary-blue); margin-bottom: 15px;"></i>
-                    <h4>Manajemen</h4>
-                    <p>Jajaran pemimpin profesional NAVM Media.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="penyiaran">
-        <div class="section-header"><h2>Unit Penyiaran Digital</h2></div>
-        <div class="grid-container">
-            <div class="card"><div class="card-head" style="background: #1a4a9e;"><h2>VAMSTV</h2></div><div class="card-body"><h4>Ventures Apex Media System</h4><p>Saluran berita utama & olahraga premium nasional.</p></div></div>
-            <div class="card"><div class="card-head" style="background: #f39c12;"><h2>NSTV</h2></div><div class="card-body"><h4>Nova Star Television</h4><p>Pusat hiburan gaya hidup dan tren generasi muda.</p></div></div>
-            <div class="card"><div class="card-head" style="background: #27ae60;"><h2>RAIZA</h2></div><div class="card-body"><h4>Raiza Channels</h4><p>Fokus pada edukasi keluarga dan dokumenter budaya.</p></div></div>
-            <div class="card"><div class="card-head" style="background: #e74c3c;"><h2>NVDTV</h2></div><div class="card-body"><h4>Nova Vision Digital</h4><p>Saluran film dan drama orisinal berkualitas tinggi.</p></div></div>
-            <div class="card"><div class="card-head" style="background: #8e44ad;"><h2>VMATV</h2></div><div class="card-body"><h4>Ventures Media Asia</h4><p>Jaringan informasi bisnis dan inovasi Asia Pasifik.</p></div></div>
-        </div>
-    </section>
-
-    <section id="manajemen">
-        <div class="section-header"><h2>Dewan Direksi</h2></div>
-        <div class="grid-container">
-            <div class="card">
-                <div class="photo-placeholder"><i class="fas fa-user-tie"></i></div>
-                <div class="card-body" style="text-align: center;">
-                    <h4>M RAMADHAN</h4>
-                    <p style="color: var(--accent-orange); font-weight: bold; font-size: 14px;">DIREKTUR UTAMA</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="photo-placeholder"><i class="fas fa-user-tie"></i></div>
-                <div class="card-body" style="text-align: center;">
-                    <h4>Rayandra Alvernio Virmansyah</h4>
-                    <p style="color: var(--accent-orange); font-weight: bold; font-size: 14px;">DIREKTUR PROGRAMMING</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="photo-placeholder"><i class="fas fa-user-tie"></i></div>
-                <div class="card-body" style="text-align: center;">
-                    <h4>Kenzo Fabian Narendra</h4>
-                    <p style="color: var(--accent-orange); font-weight: bold; font-size: 14px;">DIREKTUR OPERASIONAL</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="overlay" id="menuOverlay">
-        <div class="overlay-header">
-            <span class="logo" style="color:#fff">NAVM <span style="color:#aaa">MEDIA</span></span>
-            <button class="close-btn" onclick="toggleMenu()">&times;</button>
-        </div>
-        <div class="menu-grid">
-            <div class="menu-col">
-                <h5>Tentang Kami</h5>
-                <ul>
-                    <li><a onclick="showSection('home')">Profil Perusahaan</a></li>
-                    <li><a onclick="showSection('manajemen')">Manajemen</a></li>
-                </ul>
-            </div>
-            <div class="menu-col">
-                <h5>Usaha Kami</h5>
-                <ul>
-                    <li><a onclick="showSection('penyiaran')">Penyiaran Digital</a></li>
-                    <li><a href="#">VAMSTV</a></li>
-                    <li><a href="#">NSTV</a></li>
-                </ul>
-            </div>
-            <div class="menu-col">
-                <h5>Kontak</h5>
-                <ul>
-                    <li><a href="#">Karir</a></li>
-                    <li><a href="#">Hubungi Kami</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 NOVA Apex Ventures Media. All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        function toggleMenu() {
-            const m = document.getElementById('menuOverlay');
-            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
-        }
-        function showSection(id) {
-            document.querySelectorAll('section').forEach(s => s.classList.remove('active-section'));
-            document.getElementById(id).classList.add('active-section');
-            document.getElementById('menuOverlay').style.display = 'none';
-            window.scrollTo(0,0);
-        }
-    </script>
-</body>
-</html>
+        .title-box { margin-bottom: 50px; border-left: 6px solid var(--gold); padding-left: 20px; }
+        .title-box h2 { font-size: 32px; color: var(--navy);
