@@ -3,84 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kepemimpinan & Manajemen | NAV Media Group</title>
+    <title>NAV Media Group | Official Corporate Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --navy: #1a4a9e;
             --gold: #f39c12;
-            --dark: #111;
-            --light-bg: #f9f9f9;
+            --dark: #0f0f0f;
+            --light-gray: #f8f9fa;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #fff; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* HEADER */
+        /* --- NAVIGATION --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: #fff; border-bottom: 3px solid var(--navy);
             position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .logo { font-size: 24px; font-weight: 900; color: var(--navy); text-decoration: none; }
+        .logo { font-size: 24px; font-weight: 900; color: var(--navy); text-decoration: none; display: flex; align-items: baseline; }
         .logo span { font-size: 10px; color: #888; margin-left: 5px; letter-spacing: 1px; }
-        .btn-menu { background: var(--navy); color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-menu { background: var(--navy); color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px; }
 
-        /* MENU OVERLAY (SCMA STYLE) */
+        /* --- FULLSCREEN MENU OVERLAY --- */
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15,15,15,0.98); z-index: 2000; display: none; flex-direction: column; padding: 50px 8%; color: #fff;
+            background: rgba(10, 10, 10, 0.98); z-index: 2000; display: none; 
+            flex-direction: column; padding: 50px 8%; color: #fff; overflow-y: auto;
         }
-        .close-area { text-align: right; }
-        .close-btn { background: none; border: none; color: #fff; font-size: 50px; cursor: pointer; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 20px; }
-        .menu-col h5 { color: var(--gold); border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .close-btn { align-self: flex-end; background: none; border: none; color: #fff; font-size: 50px; cursor: pointer; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-top: 30px; }
+        .menu-col h5 { color: var(--gold); border-bottom: 1px solid #333; padding-bottom: 12px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .menu-col ul { list-style: none; }
-        .menu-col a { color: #ccc; text-decoration: none; display: block; margin-bottom: 15px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .menu-col a { color: #aaa; text-decoration: none; display: block; margin-bottom: 15px; font-size: 17px; cursor: pointer; transition: 0.3s; }
         .menu-col a:hover { color: #fff; padding-left: 10px; }
 
-        /* SECTIONS CONTROL */
-        section { display: none; animation: fadeIn 0.5s ease; }
+        /* --- SECTIONS LOGIC --- */
+        section { display: none; min-height: 80vh; animation: fadeIn 0.6s ease-in-out; }
         .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* HOME PAGE */
+        /* --- HOME PAGE (HERO) --- */
         #home {
-            height: 90vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069') center/cover;
+            height: 90vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000') center/cover;
             display: flex; align-items: center; justify-content: center; text-align: center; color: #fff;
         }
-        .hero-box h1 { font-size: clamp(35px, 7vw, 60px); font-weight: 900; letter-spacing: 2px; }
-        .hero-box p { color: var(--gold); font-size: 20px; font-weight: bold; text-transform: uppercase; margin-top: 10px; }
+        .hero-content h1 { font-size: clamp(35px, 8vw, 65px); font-weight: 900; letter-spacing: 3px; }
+        .hero-content p { color: var(--gold); font-size: 22px; font-weight: bold; text-transform: uppercase; margin-top: 15px; letter-spacing: 2px; }
 
-        /* KEPEMIMPINAN PAGE */
-        .mgmt-banner { background: var(--light-bg); padding: 80px 8% 40px; text-align: center; }
-        .mgmt-banner h1 { font-size: 40px; color: var(--navy); margin-bottom: 10px; }
+        /* --- KEPEMIMPINAN STYLING --- */
+        .page-header { background: var(--light-gray); padding: 80px 8% 40px; text-align: center; }
+        .sub-nav { display: flex; justify-content: center; gap: 20px; background: var(--navy); padding: 15px; position: sticky; top: 68px; z-index: 900; flex-wrap: wrap; }
+        .sub-nav a { color: #fff; text-decoration: none; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+
+        .section-title { border-left: 6px solid var(--gold); padding-left: 20px; margin: 60px 0 40px; color: var(--navy); text-transform: uppercase; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
         
-        .sticky-sub-nav { 
-            display: flex; justify-content: center; gap: 25px; background: var(--navy); 
-            padding: 15px; position: sticky; top: 68px; z-index: 900; flex-wrap: wrap;
-        }
-        .sticky-sub-nav a { color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 400px; object-fit: cover; background: #eee; }
+        .card-body { padding: 25px; }
+        .card-body h4 { color: var(--navy); margin-bottom: 5px; font-size: 18px; }
+        .card-body span { color: var(--gold); font-size: 11px; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .card-body p { font-size: 13px; color: #666; line-height: 1.5; }
 
-        .content-wrap { padding: 60px 8%; }
-        .title-divider { border-left: 6px solid var(--gold); padding-left: 20px; margin: 60px 0 40px; color: var(--navy); text-transform: uppercase; }
+        /* --- UNIT PENYIARAN STYLING --- */
+        .unit-card { padding: 40px; color: #fff; border-radius: 15px; text-align: center; }
+        .unit-card h2 { font-size: 35px; margin-bottom: 10px; }
 
-        /* GRID CARDS */
-        .grid-leader { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 35px; }
-        .card-leader { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; text-align: center; }
-        .card-leader:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .card-leader img { width: 100%; height: 380px; object-fit: cover; background: #eee; }
-        .card-info { padding: 25px; }
-        .card-info h4 { color: var(--navy); font-size: 19px; margin-bottom: 5px; }
-        .card-info p { color: var(--gold); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+        /* --- COMMITTEE BOX --- */
+        .com-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .com-box { background: var(--light-gray); padding: 30px; border-radius: 12px; border-top: 4px solid var(--navy); }
+        .com-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #ddd; font-size: 14px; }
+        .com-row b { color: var(--navy); }
 
-        /* COMMITTEE BOX */
-        .committee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .committee-box { background: var(--light-bg); padding: 40px; border-radius: 15px; border: 1px solid #ddd; }
-        .com-member { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #ccc; font-size: 14px; }
-        .com-member span:first-child { font-weight: bold; color: var(--navy); }
-
-        footer { background: #111; color: #777; padding: 50px 8%; text-align: center; font-size: 14px; }
+        footer { background: var(--dark); color: #666; padding: 60px 8%; text-align: center; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
@@ -90,145 +88,123 @@
         <button class="btn-menu" onclick="toggleMenu()"><i class="fas fa-bars"></i> MENU</button>
     </header>
 
-    <div class="overlay" id="fullMenu">
-        <div class="close-area"><button class="close-btn" onclick="toggleMenu()">&times;</button></div>
+    <div class="overlay" id="overlayMenu">
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
         <div class="menu-grid">
             <div class="menu-col">
                 <h5>Tentang Kami</h5>
                 <ul>
-                    <li><a onclick="showPage('home')">Halaman Utama</a></li>
-                    <li><a onclick="showPage('manajemen')">Kepemimpinan</a></li>
+                    <li><a onclick="showPage('home')">Beranda</a></li>
+                    <li><a onclick="showPage('kepemimpinan')">Kepemimpinan</a></li>
                     <li><a href="#">Visi & Misi</a></li>
-                    <li><a href="#">Riwayat Singkat</a></li>
                 </ul>
             </div>
             <div class="menu-col">
-                <h5>Unit Usaha</h5>
+                <h5>Unit Bisnis</h5>
                 <ul>
-                    <li><a href="#">VAMSTV</a></li>
-                    <li><a href="#">NSTV</a></li>
-                    <li><a href="#">RAIZA CHANNELS</a></li>
-                    <li><a href="#">NVDTV</a></li>
-                    <li><a href="#">VMATV</a></li>
+                    <li><a onclick="showPage('penyiaran')">Penyiaran Digital</a></li>
+                    <li><a href="#">Produksi Konten</a></li>
                 </ul>
             </div>
             <div class="menu-col">
                 <h5>Investor</h5>
                 <ul>
                     <li><a href="#">Laporan Tahunan</a></li>
-                    <li><a href="#">Struktur Pemegang Saham</a></li>
-                    <li><a href="#">Tata Kelola Perusahaan</a></li>
+                    <li><a href="#">Informasi Saham</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
     <section id="home" class="active">
-        <div class="hero-box">
+        <div class="hero-content">
             <h1>NAV MEDIA GROUP</h1>
-            <p>The Future of Digital Broadcasting</p>
+            <p>Indonesia's Premier Digital Broadcast Network</p>
         </div>
     </section>
 
-    <section id="manajemen">
-        <div class="mgmt-banner">
+    <section id="kepemimpinan">
+        <div class="page-header">
             <h1>KEPEMIMPINAN</h1>
-            <p>Berdedikasi untuk memberikan nilai terbaik bagi seluruh pemangku kepentingan.</p>
+            <p>Struktur Manajemen Profesional NAV Media Group</p>
+        </div>
+        <div class="sub-nav">
+            <a href="#struktur">Struktur Organisasi</a>
+            <a href="#komisaris">Dewan Komisaris</a>
+            <a href="#direksi">Dewan Direksi</a>
+            <a href="#komite">Komite & Sekretaris</a>
         </div>
 
-        <div class="sticky-sub-nav">
-            <a href="#org-structure">Struktur Organisasi</a>
-            <a href="#board-commissaries">Dewan Komisaris</a>
-            <a href="#board-directors">Dewan Direksi</a>
-            <a href="#committee">Komite</a>
-            <a href="#secretary">Sekretaris Perusahaan</a>
+        <div style="padding: 0 8%;">
+            <div id="struktur" class="section-title"><h2>Struktur Organisasi</h2></div>
+            <div style="padding:60px; border:2px dashed #ddd; text-align:center; background:#fdfdfd; border-radius:15px;">
+                <i class="fas fa-project-diagram fa-3x" style="color:#ddd; margin-bottom:15px;"></i>
+                <p style="color:#999">Bagan Struktur Organisasi Perusahaan 2026</p>
+            </div>
+
+            <div id="komisaris" class="section-title"><h2>Dewan Komisaris</h2></div>
+            <div class="grid-container">
+                <div class="card"><img src="https://via.placeholder.com/400x500?text=Komisaris+Utama"><div class="card-body"><h4>Bapak Dr. H. Sulaiman</h4><span>Komisaris Utama</span></div></div>
+                <div class="card"><img src="https://via.placeholder.com/400x500?text=Komisaris+2"><div class="card-body"><h4>Ibu Retno Lestari</h4><span>Komisaris Independen</span></div></div>
+                <div class="card"><img src="https://via.placeholder.com/400x500?text=Komisaris+3"><div class="card-body"><h4>Bapak Prof. Satrio Wahono</h4><span>Komisaris</span></div></div>
+                <div class="card"><img src="https://via.placeholder.com/400x500?text=Komisaris+4"><div class="card-body"><h4>Ibu Maya Indah Sari</h4><span>Komisaris</span></div></div>
+            </div>
+
+            <div id="direksi" class="section-title"><h2>Dewan Direksi</h2></div>
+            <div class="grid-container">
+                <div class="card" style="border: 2px solid var(--navy);">
+                    <img src="https://via.placeholder.com/400x500?text=M+RAMADHAN">
+                    <div class="card-body">
+                        <h4>M RAMADHAN</h4><span>Direktur Utama (CEO)</span>
+                        <p>Pemimpin tertinggi yang mengarahkan strategi dan inovasi NAV Media Group.</p>
+                    </div>
+                </div>
+                <div class="card"><img src="https://via.placeholder.com/400x500?text=Rayandra"><div class="card-body"><h4>Rayandra Alvernio Virmansyah</h4><span>Direktur Programming</span><p>Ahli strategi konten dan produksi program televisi nasional.</p></div></div>
+                <div class="card"><img src="https://via.placeholder.com/400x500?text=Kenzo"><div class="card-body"><h4>Kenzo Fabian Narendra</h4><span>Direktur Operasional</span><p>Penanggung jawab infrastruktur transmisi digital nasional.</p></div></div>
+                <div class="card"><img src="https://via.placeholder.com/400x500?text=Direktur+4"><div class="card-body"><h4>Aris Satria Dewa</h4><span>Direktur Keuangan</span><p>Manajemen finansial dan akuntansi grup secara terpadu.</p></div></div>
+                <div class="card"><img src="https://via.placeholder.com/400x500?text=Direktur+5"><div class="card-body"><h4>Dian Sastrowardoyo</h4><span>Direktur Digital & Media</span><p>Pengembangan platform streaming dan media sosial interaktif.</p></div></div>
+            </div>
+
+            <div id="komite" class="section-title"><h2>Komite & Sekretaris</h2></div>
+            <div class="com-container" style="margin-bottom: 80px;">
+                <div class="com-box">
+                    <h3>Komite Audit</h3><br>
+                    <div class="com-row"><b>Ketua</b> <span>Ibu Retno Lestari</span></div>
+                    <div class="com-row"><b>Anggota</b> <span>Bapak Ahmad Fauzi</span></div>
+                </div>
+                <div class="com-box">
+                    <h3>Sekretaris Perusahaan</h3><br>
+                    <div class="com-row"><b>Nama</b> <span>Ibu Clarissa Maheswari</span></div>
+                    <div class="com-row"><b>Kontak</b> <span>corsec@navm.co.id</span></div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="content-wrap">
-            <div id="org-structure" class="title-divider"><h2>Struktur Organisasi</h2></div>
-            <div style="width: 100%; padding: 50px; border: 2px dashed #ccc; text-align: center; border-radius: 20px; background: #fff;">
-                <i class="fas fa-sitemap fa-4x" style="color: #eee; margin-bottom: 20px;"></i>
-                <p style="color: #999;">Bagan Struktur Organisasi NAV Media Group 2026</p>
-            </div>
-
-            <div id="board-commissaries" class="title-divider"><h2>Dewan Komisaris</h2></div>
-            <div class="grid-leader">
-                <div class="card-leader"><img src="https://via.placeholder.com/400x550?text=Komisaris+Utama">
-                    <div class="card-info"><h4>Bapak Dr. H. Sulaiman</h4><p>Komisaris Utama</p></div>
-                </div>
-                <div class="card-leader"><img src="https://via.placeholder.com/400x550?text=Komisaris+2">
-                    <div class="card-info"><h4>Ibu Retno Lestari</h4><p>Komisaris Independen</p></div>
-                </div>
-                <div class="card-leader"><img src="https://via.placeholder.com/400x550?text=Komisaris+3">
-                    <div class="card-info"><h4>Bapak Prof. Satrio Wahono</h4><p>Komisaris</p></div>
-                </div>
-                <div class="card-leader"><img src="https://via.placeholder.com/400x550?text=Komisaris+4">
-                    <div class="card-info"><h4>Ibu Maya Indah Sari</h4><p>Komisaris</p></div>
-                </div>
-            </div>
-
-            <div id="board-directors" class="title-divider"><h2>Dewan Direksi</h2></div>
-            <div class="grid-leader">
-                <div class="card-leader" style="border: 3px solid var(--navy);">
-                    <img src="https://via.placeholder.com/400x550?text=M+RAMADHAN">
-                    <div class="card-info"><h4>M RAMADHAN</h4><p>Direktur Utama (CEO)</p></div>
-                </div>
-                <div class="card-leader">
-                    <img src="https://via.placeholder.com/400x550?text=Rayandra">
-                    <div class="card-info"><h4>Rayandra Alvernio Virmansyah</h4><p>Direktur Programming</p></div>
-                </div>
-                <div class="card-leader">
-                    <img src="https://via.placeholder.com/400x550?text=Kenzo">
-                    <div class="card-info"><h4>Kenzo Fabian Narendra</h4><p>Direktur Operasional</p></div>
-                </div>
-                <div class="card-leader">
-                    <img src="https://via.placeholder.com/400x550?text=Direktur+4">
-                    <div class="card-info"><h4>Aris Satria Dewa</h4><p>Direktur Keuangan</p></div>
-                </div>
-                <div class="card-leader">
-                    <img src="https://via.placeholder.com/400x550?text=Direktur+5">
-                    <div class="card-info"><h4>Dian Sastrowardoyo</h4><p>Direktur Digital & Media</p></div>
-                </div>
-            </div>
-
-            <div id="committee" class="title-divider"><h2>Komite Pendukung</h2></div>
-            <div class="committee-grid">
-                <div class="committee-box">
-                    <h3 style="color:var(--navy); margin-bottom:20px; border-bottom: 2px solid var(--gold); display:inline-block;">Komite Audit</h3>
-                    <div class="com-member"><span>Ketua</span> <span>Ibu Retno Lestari</span></div>
-                    <div class="com-member"><span>Anggota</span> <span>Bapak Ahmad Fauzi</span></div>
-                    <div class="com-member"><span>Anggota</span> <span>Ibu Sri Wahyuni</span></div>
-                </div>
-                <div class="committee-box">
-                    <h3 style="color:var(--navy); margin-bottom:20px; border-bottom: 2px solid var(--gold); display:inline-block;">Komite Nominasi & Remunerasi</h3>
-                    <div class="com-member"><span>Ketua</span> <span>Bapak Dr. H. Sulaiman</span></div>
-                    <div class="com-member"><span>Anggota</span> <span>Bapak Prof. Satrio Wahono</span></div>
-                    <div class="com-member"><span>Anggota</span> <span>Bapak Budi Santoso</span></div>
-                </div>
-            </div>
-
-            <div id="secretary" class="title-divider"><h2>Sekretaris Perusahaan</h2></div>
-            <div class="card-leader" style="max-width: 350px;">
-                <img src="https://via.placeholder.com/400x550?text=Sekretaris">
-                <div class="card-info"><h4>Ibu Clarissa Maheswari</h4><p>Corporate Secretary</p></div>
-            </div>
+    <section id="penyiaran">
+        <div class="page-header"><h1>UNIT PENYIARAN</h1><p>5 Stasiun Televisi Digital Unggulan Kami</p></div>
+        <div style="padding: 60px 8%;" class="grid-container">
+            <div class="unit-card" style="background: #1a4a9e;"><h2>VAMSTV</h2><p>News & Sports</p></div>
+            <div class="unit-card" style="background: #f39c12;"><h2>NSTV</h2><p>Entertainment</p></div>
+            <div class="unit-card" style="background: #27ae60;"><h2>RAIZA</h2><p>Education</p></div>
+            <div class="unit-card" style="background: #e74c3c;"><h2>NVDTV</h2><p>Movies</p></div>
+            <div class="unit-card" style="background: #8e44ad;"><h2>VMATV</h2><p>Business</p></div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 NOVA Apex Ventures Media Group. Seluruh Hak Cipta Dilindungi.</p>
+        <p>&copy; 2026 NOVA Apex Ventures Media Group. All Rights Reserved.</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('fullMenu');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+            const m = document.getElementById('overlayMenu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
         }
-
         function showPage(id) {
             document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            document.getElementById('fullMenu').style.display = 'none';
+            document.getElementById('overlayMenu').style.display = 'none';
             window.scrollTo(0,0);
         }
     </script>
